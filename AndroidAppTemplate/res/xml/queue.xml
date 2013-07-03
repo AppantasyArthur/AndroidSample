@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DIDL-Lite 
+	xmlns:dc="http://purl.org/dc/elements/1.1/" 
+	xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/" 
+	xmlns:dlna="urn:schemas-dlna-org:metadata-1-0/" 
+	xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
+		<item 
+		    id="91a2f483e86733ce3815b08a49cf7d43" 
+		    parentID="6b425fcea75d1f5115890df149efe42a" 
+		    restricted="0" 
+		    dlna:dlnaManaged="00000004">
+				<dc:title>01.花蝴蝶.mp3</dc:title>
+				<upnp:class>object.item.audioItem.musicTrack</upnp:class>
+				<dc:date>2013-03-13T07:12:07Z</dc:date>
+				<res size="7632960" protocolInfo="http-get:*:audio/x-mpegurl:*" duration="0:03:10.000" bitrate="40000" sampleFrequency="48000" nrAudioChannels="2">
+				    http://opml.radiotime.com/Tune.ashx?id=s28773&amp;partnerId=iq4GbQ5&amp;serial=e069954d826b
+				</res>
+				<upnp:originalTrackNumber>0</upnp:originalTrackNumber>			
+		</item>
+</DIDL-Lite>
+		
+<!--  <Event xmlns="">
+	<QueueDump version="1.0.0">
+		<Queue name="Q:0">
+			<Track id="01.花蝴蝶.mp3(956272)" title=""></Track>
+			<Track id="01.花蝴蝶.mp3(956330)" title=""></Track>
+			<Track id="Unknown(956368)" title=""></Track>
+			<Track id="Unknown(956398)" title=""></Track>
+			<Track id="Unknown(956425)" title=""></Track>
+			<Track id="Unknown(956452)" title=""></Track>
+		</Queue>
+	</QueueDump>
+</Event>
+
+<Event xmlns="">
+	<QueueDump version="1.0.0">
+		<Queue name="Q:0">
+			<Track id="AUD-20110730-WA0001(836525)" title="AUD-20110730-WA0001"></Track>
+			<Track id="05%20Shadow%20Of%20The%20Day(35613)" title="05 Shadow Of The Day"></Track>
+		</Queue>
+	</QueueDump>
+</Event>
+
+<Event xmlns="">
+	<QueueDump version="1.0.0">
+		<Queue name="Q:0">
+			<Track id="01.花蝴蝶.mp3(40043)" title="01.花蝴蝶.mp3"></Track>
+			<Track id="01.花蝴蝶.mp3(429073)" title="01.花蝴蝶.mp3"></Track>
+		</Queue>
+	</QueueDump>
+</Event> 
+-->
+
+
+

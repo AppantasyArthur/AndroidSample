@@ -1,0 +1,58 @@
+<DIDL-Lite xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/" xmlns:dlna="urn:schemas-dlna-org:metadata-1-0/" xmlns:pv="http://www.pv.com/pvns/" xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
+  <container id="10$10$57" parentID="10$10" restricted="1" childCount="20" searchable="1">
+    <dc:title>- ALL -</dc:title>
+    <upnp:genre>Rock</upnp:genre>
+    <pv:modificationTime>1372818805</pv:modificationTime>
+    <upnp:class>object.container</upnp:class>
+  </container>
+  <container id="10$10$213" parentID="10$10" restricted="1" childCount="14" searchable="1">
+    <dc:title>Bon Jovi</dc:title>
+    <upnp:artist>Bon Jovi</upnp:artist>
+    <upnp:genre>Rock</upnp:genre>
+    <dc:creator>Bon Jovi</dc:creator>
+    <pv:modificationTime>1372818805</pv:modificationTime>
+    <upnp:class>object.container.person.musicArtist</upnp:class>
+  </container>
+  <container id="10$10$191" parentID="10$10" restricted="1" childCount="1" searchable="1">
+    <dc:title>Unknown</dc:title>
+    <upnp:artist>Unknown</upnp:artist>
+    <upnp:genre>Unknown</upnp:genre>
+    <dc:creator>Unknown</dc:creator>
+    <upnp:class>object.container.person.musicArtist</upnp:class>
+  </container>
+  <container id="10$10$171" parentID="10$10" restricted="1" childCount="1" searchable="1">
+    <dc:title>Wma(9.2 VBR)</dc:title>
+    <upnp:artist>Wma(9.2 VBR)</upnp:artist>
+    <upnp:genre>Soundtrack</upnp:genre>
+    <dc:creator>Wma(9.2 VBR)</dc:creator>
+    <upnp:class>object.container.person.musicArtist</upnp:class>
+  </container>
+  <container id="10$10$147" parentID="10$10" restricted="1" childCount="1" searchable="1">
+    <dc:title>Wma10Pro</dc:title>
+    <upnp:artist>Wma10Pro</upnp:artist>
+    <upnp:genre>Unknown</upnp:genre>
+    <dc:creator>Wma10Pro</dc:creator>
+    <upnp:class>object.container.person.musicArtist</upnp:class>
+  </container>
+  <container id="10$10$58" parentID="10$10" restricted="1" childCount="1" searchable="1">
+    <dc:title>±çÀR¯ø&amp;¥j¥¨°ò</dc:title>
+    <upnp:artist>±çÀR¯ø&amp;¥j¥¨°ò</upnp:artist>
+    <upnp:genre>Pop</upnp:genre>
+    <dc:creator>±çÀR¯ø&amp;¥j¥¨°ò</dc:creator>
+    <upnp:class>object.container.person.musicArtist</upnp:class>
+  </container>
+  <container id="10$10$91" parentID="10$10" restricted="1" childCount="1" searchable="1">
+    <dc:title>±çÀR¯ø&amp;¶À«~«a</dc:title>
+    <upnp:artist>±çÀR¯ø&amp;¶À«~«a</upnp:artist>
+    <upnp:genre>Pop</upnp:genre>
+    <dc:creator>±çÀR¯ø&amp;¶À«~«a</dc:creator>
+    <upnp:class>object.container.person.musicArtist</upnp:class>
+  </container>
+  <container id="10$10$114" parentID="10$10" restricted="1" childCount="1" searchable="1">
+    <dc:title>±çÀR¯ø&amp;¿c¼s¥ò</dc:title>
+    <upnp:artist>±çÀR¯ø&amp;¿c¼s¥ò</upnp:artist>
+    <upnp:genre>Pop</upnp:genre>
+    <dc:creator>±çÀR¯ø&amp;¿c¼s¥ò</dc:creator>
+    <upnp:class>object.container.person.musicArtist</upnp:class>
+  </container>
+</DIDL-Lite>

@@ -1,0 +1,17 @@
+<DIDL-Lite xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/" xmlns:dlna="urn:schemas-dlna-org:metadata-1-0/" xmlns:pv="http://www.pv.com/pvns/" xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
+  <container id="0$1" parentID="0" restricted="1" childCount="6" searchable="1">
+    <dc:title>Music</dc:title>
+    <pv:modificationTime>1372818805</pv:modificationTime>
+    <upnp:class>object.container</upnp:class>
+  </container>
+  <container id="0$2" parentID="0" restricted="1" childCount="8" searchable="1">
+    <dc:title>Photos</dc:title>
+    <pv:modificationTime>1372818803</pv:modificationTime>
+    <upnp:class>object.container</upnp:class>
+  </container>
+  <container id="0$3" parentID="0" restricted="1" childCount="6" searchable="1">
+    <dc:title>Videos</dc:title>
+    <pv:modificationTime>1372818805</pv:modificationTime>
+    <upnp:class>object.container</upnp:class>
+  </container>
+</DIDL-Lite>

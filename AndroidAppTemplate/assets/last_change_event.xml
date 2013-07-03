@@ -1,0 +1,34 @@
+<Event xmlns="urn:schemas-upnp-org:metadata-1-0/AVT/">
+    <InstanceID val="0">
+        <TransportState val="NO_MEDIA_PRESENT"/>
+        <TransportStatus val="OK"/>
+        <CurrentPlayMode val="NORMAL"/>
+        <TransportPlaySpeed val="0"/>
+        <CurrentTrack val="0"/>
+        <CurrentTrackURI val=""/>
+        <CurrentTrackEmbeddedMetaData val=""/>
+        <CurrentTrackMetaData val=""/>
+        <NumberOfTracks val="0"/>
+        <AVTransportURI val=""/>
+        <CurrentTrackDuration val="00:00:00"/>
+        <CurrentMediaDuration val="00:00:00"/>
+        <CurrentTransportActions val=""/>
+        <PlaybackStorageMedium val="Network"/>
+        <RecordStorageMedium val="NOT_IMPLEMENTED"/>
+        <PossiblePlaybackStorageMedia val="Network,None"/>
+        <PossibleRecordStorageMedia val="NOT_IMPLEMENTED"/>
+        <RecordMediumWriteStatus val="UNKNOWN"/>
+        <CurrentRecordQualityMode val="NOT_IMPLEMENTED"/>
+        <PossibleRecordQualityModes val="NOT_IMPLEMENTED"/>
+        <NextAVTransportURI val=""/>
+        <NextAVTransportURIMetaData val=""/>
+        <RelativeTimePosition val="00:00:00"/>
+        <AbsoluteTimePosition val="NOT_IMPLEMENTED"/>
+        <RelativeCounterPosition val="2147483647"/>
+        <AbsoluteCounterPosition val="2147483647"/>
+	</InstanceID>
+</Event>
+        
+
+
+

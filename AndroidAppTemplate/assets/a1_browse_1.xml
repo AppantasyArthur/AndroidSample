@@ -1,0 +1,33 @@
+<DIDL-Lite xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/" xmlns:dlna="urn:schemas-dlna-org:metadata-1-0/" xmlns:pv="http://www.pv.com/pvns/" xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
+  <container id="0$1$11" parentID="0$1" restricted="1" childCount="4" searchable="1">
+    <dc:title>Album</dc:title>
+    <pv:modificationTime>1372818805</pv:modificationTime>
+    <upnp:class>object.container</upnp:class>
+  </container>
+  <container id="0$1$7" parentID="0$1" restricted="1" childCount="20" searchable="1">
+    <dc:title>All Tracks</dc:title>
+    <upnp:genre>Rock</upnp:genre>
+    <pv:modificationTime>1372818805</pv:modificationTime>
+    <upnp:class>object.container</upnp:class>
+  </container>
+  <container id="0$1$10" parentID="0$1" restricted="1" childCount="8" searchable="1">
+    <dc:title>Artist</dc:title>
+    <pv:modificationTime>1372818805</pv:modificationTime>
+    <upnp:class>object.container.person.musicArtist</upnp:class>
+  </container>
+  <container id="0$1$12" parentID="0$1" restricted="1" childCount="1" searchable="1">
+    <dc:title>Folder</dc:title>
+    <upnp:class>object.container.storageFolder</upnp:class>
+  </container>
+  <container id="0$1$9" parentID="0$1" restricted="1" childCount="4" searchable="1">
+    <dc:title>Genre/Song</dc:title>
+    <pv:modificationTime>1372818805</pv:modificationTime>
+    <upnp:class>object.container</upnp:class>
+  </container>
+  <container id="0$1$8" parentID="0$1" restricted="0" childCount="3" searchable="1">
+    <dc:title>Playlists</dc:title>
+    <pv:modificationTime>1372818805</pv:modificationTime>
+    <pv:playlistRoot>Music</pv:playlistRoot>
+    <upnp:class>object.container</upnp:class>
+  </container>
+</DIDL-Lite>

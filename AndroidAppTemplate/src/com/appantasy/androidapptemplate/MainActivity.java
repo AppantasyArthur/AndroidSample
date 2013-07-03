@@ -1,7 +1,13 @@
 package com.appantasy.androidapptemplate;
 
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.Map;
 import java.util.logging.Logger;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import org.teleal.cling.android.AndroidUpnpService;
 import org.teleal.cling.android.AndroidUpnpServiceImpl;
@@ -23,6 +29,9 @@ import org.teleal.cling.model.state.StateVariableValue;
 import org.teleal.cling.registry.DefaultRegistryListener;
 import org.teleal.cling.registry.Registry;
 import org.teleal.cling.registry.RegistryListener;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 
 import android.app.ListActivity;
 import android.content.ComponentName;
@@ -31,11 +40,15 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.appantasy.androidapptemplate.event.lastchange.LastChangeDO;
+import com.appantasy.androidapptemplate.event.lastchange.LastChangeHandler;
 
 
 
@@ -79,13 +92,36 @@ public class MainActivity extends ListActivity {
 
     };
    
+    private String xml =	"<Event xmlns=\"urn:schemas-upnp-org:metadata-1-0/AVT/\">" +
+			"<InstanceID val=\"0\">" +
+				"<TransportState val=\"STOPPED\"/>" +
+				"<TransportStatus val=\"PREPARE\"/>" +
+				"<CurrentTrack val=\"1\"/>" + 
+				"<CurrentTrackURI val=\"http://192.168.1.11:9000/disk/DLNA-PNMP3-OP01-FLAGS01700000/music/O7I70/Open%20All%20Night.mp3\"/>" +
+				"<CurrentTrackEmbeddedMetaData val=\"&lt;DIDL-Lite xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot; xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot;&gt;&lt;item id=&quot;7I70&quot; parentID=&quot;7&quot; restricted=&quot;1&quot;&gt;     &lt;dc:title&gt;Open All Night&lt;/dc:title&gt;     &lt;dc:date&gt;2002-01-01&lt;/dc:date&gt;     &lt;upnp:artist&gt;Bon Jovi&lt;/upnp:artist&gt;     &lt;upnp:genre&gt;Rock&lt;/upnp:genre&gt;     &lt;upnp:album&gt;Bounce&lt;/upnp:album&gt;     &lt;upnp:originalTrackNumber&gt;12&lt;/upnp:originalTrackNumber&gt;     &lt;dc:creator&gt;Bon Jovi&lt;/dc:creator&gt;     &lt;upnp:albumArtURI dlna:profileID=&quot;JPEG_TN&quot;&gt;http://192.168.1.11:9000/cgi-bin/W160/H160/S267/L15463/Xjpeg-scale.desc/O7I70.jpg&lt;/upnp:albumArtURI&gt;     &lt;upnp:albumArtist&gt;Bon Jovi&lt;/upnp:albumArtist&gt;     &lt;pv:lastPlayedTime&gt;2013-07-01T17:14:12&lt;/pv:lastPlayedTime&gt;     &lt;pv:playcount&gt;1&lt;/pv:playcount&gt;     &lt;pv:modificationTime&gt;1338984350&lt;/pv:modificationTime&gt;     &lt;pv:addedTime&gt;1368092439&lt;/pv:addedTime&gt;     &lt;pv:lastUpdated&gt;1372670052&lt;/pv:lastUpdated&gt;     &lt;res resolution=&quot;&quot;  colorDepth=&quot;0&quot;  size=&quot;6265580&quot; duration=&quot;0:04:20&quot; protocolInfo=&quot;http-get:*:audio/mpeg:DLNA.ORG_PN=MP3;DLNA.ORG_OP=01;DLNA.ORG_FLAGS=01700000000000000000000000000000&quot;&gt;http://192.168.1.11:9000/disk/DLNA-PNMP3-OP01-FLAGS01700000/music/O7I70/Open%20All%20Night.mp3&lt;/res&gt;     &lt;upnp:class&gt;object.item.audioItem.musicTrack&lt;/upnp:class&gt;   &lt;/item&gt;&lt;/DIDL-Lite&gt;\"/>" +
+				"<CurrentTrackMetaData val=\"&lt;DIDL-Lite xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot; xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot;&gt;&lt;item id=&quot;7I70&quot; parentID=&quot;7&quot; restricted=&quot;1&quot;&gt;     &lt;dc:title&gt;Open All Night&lt;/dc:title&gt;     &lt;dc:date&gt;2002-01-01&lt;/dc:date&gt;     &lt;upnp:artist&gt;Bon Jovi&lt;/upnp:artist&gt;     &lt;upnp:genre&gt;Rock&lt;/upnp:genre&gt;     &lt;upnp:album&gt;Bounce&lt;/upnp:album&gt;     &lt;upnp:originalTrackNumber&gt;12&lt;/upnp:originalTrackNumber&gt;     &lt;dc:creator&gt;Bon Jovi&lt;/dc:creator&gt;     &lt;upnp:albumArtURI dlna:profileID=&quot;JPEG_TN&quot;&gt;http://192.168.1.11:9000/cgi-bin/W160/H160/S267/L15463/Xjpeg-scale.desc/O7I70.jpg&lt;/upnp:albumArtURI&gt;     &lt;upnp:albumArtist&gt;Bon Jovi&lt;/upnp:albumArtist&gt;     &lt;pv:lastPlayedTime&gt;2013-07-01T17:14:12&lt;/pv:lastPlayedTime&gt;     &lt;pv:playcount&gt;1&lt;/pv:playcount&gt;     &lt;pv:modificationTime&gt;1338984350&lt;/pv:modificationTime&gt;     &lt;pv:addedTime&gt;1368092439&lt;/pv:addedTime&gt;     &lt;pv:lastUpdated&gt;1372670052&lt;/pv:lastUpdated&gt;     &lt;res resolution=&quot;&quot;  colorDepth=&quot;0&quot;  size=&quot;6265580&quot; duration=&quot;0:04:20&quot; protocolInfo=&quot;http-get:*:audio/mpeg:DLNA.ORG_PN=MP3;DLNA.ORG_OP=01;DLNA.ORG_FLAGS=01700000000000000000000000000000&quot;&gt;http://192.168.1.11:9000/disk/DLNA-PNMP3-OP01-FLAGS01700000/music/O7I70/Open%20All%20Night.mp3&lt;/res&gt;     &lt;upnp:class&gt;object.item.audioItem.musicTrack&lt;/upnp:class&gt;   &lt;/item&gt;&lt;/DIDL-Lite&gt;\"/>" +
+				"<CurrentTrackDuration val=\"0:04:20\"/>" +
+				"<CurrentMediaDuration val=\"0:04:20\"/>" +
+				"<NumberOfTracks val=\"1\"/>" +
+				"<AVTransportURI val=\"http://192.168.1.11:9000/disk/DLNA-PNMP3-OP01-FLAGS01700000/music/O7I70/Open%20All%20Night.mp3\"/>" +
+				"<AVTransportURIMetaData val=\"&lt;DIDL-Lite xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot; xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot;&gt;&lt;item id=&quot;7I70&quot; parentID=&quot;7&quot; restricted=&quot;1&quot;&gt;     &lt;dc:title&gt;Open All Night&lt;/dc:title&gt;     &lt;dc:date&gt;2002-01-01&lt;/dc:date&gt;     &lt;upnp:artist&gt;Bon Jovi&lt;/upnp:artist&gt;     &lt;upnp:genre&gt;Rock&lt;/upnp:genre&gt;     &lt;upnp:album&gt;Bounce&lt;/upnp:album&gt;     &lt;upnp:originalTrackNumber&gt;12&lt;/upnp:originalTrackNumber&gt;     &lt;dc:creator&gt;Bon Jovi&lt;/dc:creator&gt;     &lt;upnp:albumArtURI dlna:profileID=&quot;JPEG_TN&quot;&gt;http://192.168.1.11:9000/cgi-bin/W160/H160/S267/L15463/Xjpeg-scale.desc/O7I70.jpg&lt;/upnp:albumArtURI&gt;     &lt;upnp:albumArtist&gt;Bon Jovi&lt;/upnp:albumArtist&gt;     &lt;pv:lastPlayedTime&gt;2013-07-01T17:14:12&lt;/pv:lastPlayedTime&gt;     &lt;pv:playcount&gt;1&lt;/pv:playcount&gt;     &lt;pv:modificationTime&gt;1338984350&lt;/pv:modificationTime&gt;     &lt;pv:addedTime&gt;1368092439&lt;/pv:addedTime&gt;     &lt;pv:lastUpdated&gt;1372670052&lt;/pv:lastUpdated&gt;     &lt;res resolution=&quot;&quot;  colorDepth=&quot;0&quot;  size=&quot;6265580&quot; duration=&quot;0:04:20&quot; protocolInfo=&quot;http-get:*:audio/mpeg:DLNA.ORG_PN=MP3;DLNA.ORG_OP=01;DLNA.ORG_FLAGS=01700000000000000000000000000000&quot;&gt;http://192.168.1.11:9000/disk/DLNA-PNMP3-OP01-FLAGS01700000/music/O7I70/Open%20All%20Night.mp3&lt;/res&gt;     &lt;upnp:class&gt;object.item.audioItem.musicTrack&lt;/upnp:class&gt;   &lt;/item&gt;&lt;/DIDL-Lite&gt;\"/>" +
+				"<CurrentTransportActions val=\"Play,Stop,Pause,Seek,Next,Previous,X_DLNA_SeekTime,X_DLNA_SeekByte\"/>" +
+			"</InstanceID>" +
+		"</Event>";
+    
     // METHODS
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-
+		
+		LastChangeDO data = _parseLastChangeEvent(xml); 
+		if(data != null)
+			Log.d(this.toString(), data.toString());
+		
+		//ServerRunner.run(DebugServer.class);
+		
         listAdapter =
             new ArrayAdapter(
                 this,
@@ -94,13 +130,50 @@ public class MainActivity extends ListActivity {
         
         //listAdapter.
         setListAdapter(listAdapter);
-
-        // 綁定 service
+		
+        //綁定 service
         getApplicationContext().bindService(
             new Intent(this, AndroidUpnpServiceImpl.class), // intent service :  AndroidUpnpServiceImpl，android service
             serviceConnection, // action after connect/disconnect service
             Context.BIND_AUTO_CREATE
         );
+		
+		
+	}
+	
+	private LastChangeDO _parseLastChangeEvent(String xml) {   
+		
+		LastChangeDO data = null;   
+		  
+		  // sax stuff   
+		  try {   
+			  
+		    SAXParserFactory spf = SAXParserFactory.newInstance();   
+		    SAXParser sp = spf.newSAXParser();   
+		    XMLReader xr = sp.getXMLReader();   
+		  
+		    LastChangeHandler dataHandler = new LastChangeHandler();   
+		    xr.setContentHandler(dataHandler);   
+		  
+		    if(true){
+		    			
+		    	xr.parse(new InputSource(new StringReader(xml))); 
+			    data = dataHandler.getData();  
+		    	
+		    } 
+		    
+		  } catch(ParserConfigurationException pce) {   
+		    Log.e("SAX XML", "sax parse error", pce);   
+		  } catch(SAXException se) {   
+		    Log.e("SAX XML", "sax error", se);   
+		  } catch(IOException ioe) {   
+		    Log.e("SAX XML", "sax parse io error", ioe);   
+		  } catch(Exception e) {
+			  e.printStackTrace();
+		  }  
+		  
+		  return data;   
+	
 	}
 	
 	@Override
@@ -145,13 +218,15 @@ public class MainActivity extends ListActivity {
 		}
 		SwitchSubscriptionCallback sc = new SwitchSubscriptionCallback(serviceSwitchPower == null ? deviceServices[0] : serviceSwitchPower);
 		upnpService.getControlPoint().execute(sc);
+		//upnpService.getControlPoint().
 		
 		// Invoke
 		Action getTarget = serviceSwitchPower.getAction("GetTarget");
 		
-		/*Action setTarget = serviceSwitchPower.getAction("SetTarget");
-		ActionArgumentValue[] values = new ActionArgumentValue[1];
-		values[0] = new ActionArgumentValue(new ActionArgument("NewTargetValue", "Target", Direction.IN), true);*/
+		Action setTarget = serviceSwitchPower.getAction("Play");
+		ActionArgumentValue[] values = new ActionArgumentValue[3];
+		
+		values[0] = new ActionArgumentValue(new ActionArgument("NewTargetValue", "Target", Direction.IN), true);
 		
 		ActionInvocation ai = new ActionInvocation(getTarget);
 		
