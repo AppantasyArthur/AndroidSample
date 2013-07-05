@@ -69,7 +69,9 @@ public class LastChangeHandler extends DefaultHandler {
 			  _data.setCurrentTrackDuration(val);
 		  } else if(localName.equalsIgnoreCase("InstanceID")){
 			 
-		  } 
+		  } else if(localName.equalsIgnoreCase("CurrentPlayMode")){
+			  _data.setCurrentPlayMode(val);
+		  }
 	    
 	  }   
 	  

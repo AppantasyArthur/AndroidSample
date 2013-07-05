@@ -30,6 +30,8 @@ public class LastChangeDO {
 	private String currentTrackURI;
 	private String currentTrackEmbeddedMetaData;
 	
+	private String currentPlayMode;
+	
 	
 	public String getCurrentTrackURI() {
 		return currentTrackURI;
@@ -81,8 +83,22 @@ public class LastChangeDO {
 		
 		StringBuffer ret = new StringBuffer();
 		
+		ret.append(this.getCurrentTrackDuration() + "\n");
+		ret.append(this.getCurrentTrackEmbeddedMetaData() + "\n");
+		ret.append(this.getCurrentTrackURI() + "\n");
+		ret.append(this.getRelativeTimePosition() + "\n");
+		ret.append(this.getTransportState() + "\n");
+		
 		return ret.toString();
 		
+	}
+
+	public String getCurrentPlayMode() {
+		return currentPlayMode;
+	}
+
+	public void setCurrentPlayMode(String currentPlayMode) {
+		this.currentPlayMode = currentPlayMode;
 	} 
 	
 	
