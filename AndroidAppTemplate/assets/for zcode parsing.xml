@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DIDL-Lite xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/">
+    <item id="7I70" parentID="7" restricted="1"> 
+        <dc:title>Open All Night</dc:title> 
+        <dc:date>2002-01-01</dc:date> 
+        <upnp:artist>Bon Jovi</upnp:artist> 
+        <upnp:genre>Rock</upnp:genre> 
+        <upnp:album>Bounce</upnp:album> 
+        <upnp:originalTrackNumber>12</upnp:originalTrackNumber> 
+        <dc:creator>Bon Jovi</dc:creator> 
+        <upnp:albumArtURI>http://192.168.1.11:9000/cgi-bin/W160/H160/S267/L15463/Xjpeg-scale.desc/O7I70.jpg</upnp:albumArtURI> 
+        <upnp:albumArtist>Bon Jovi</upnp:albumArtist> 
+        <lastPlayedTime>2013-07-01T17:14:12</lastPlayedTime> 
+        <playcount>1</playcount> 
+        <modificationTime>1338984350</modificationTime> 
+        <addedTime>1368092439</addedTime> 
+        <lastUpdated>1372670052</lastUpdated> 
+        <res resolution="" colorDepth="0" size="6265580" duration="0:04:20" protocolInfo="http-get:*:audio/mpeg:DLNA.ORG_PN=MP3;DLNA.ORG_OP=01;DLNA.ORG_FLAGS=01700000000000000000000000000000">http://192.168.1.11:9000/disk/DLNA-PNMP3-OP01-FLAGS01700000/music/O7I70/Open%20All%20Night.mp3</res>
+        <upnp:class>object.item.audioItem.musicTrack</upnp:class> 
+     </item>
+</DIDL-Lite>

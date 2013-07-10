@@ -1,0 +1,12 @@
+<?xml version="1.0"?> 
+<e:propertyset xmlns:e="urn:schemas-upnp-org:event-1-0">
+    <e:property>
+        <Device_udn>uuid:60f87458-e7e7-4b2d-b3c1-4ed9a831e62a</Device_udn>
+    </e:property>
+    <e:property>
+        <Device_name>AGS</Device_name>
+    </e:property>
+    <e:property>
+        <Device_role>DEVICEROLETYPE_E_STANDALONE</Device_role>
+    </e:property>
+</e:propertyset> 

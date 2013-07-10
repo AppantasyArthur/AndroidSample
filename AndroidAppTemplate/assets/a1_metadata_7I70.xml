@@ -20,3 +20,21 @@
     <upnp:class>object.item.audioItem.musicTrack</upnp:class>
   </item>
 </DIDL-Lite>
+
+<DIDL-Lite xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/" xmlns:dlna="urn:schemas-dlna-org:metadata-1-0/" xmlns:pv="http://www.pv.com/pvns/" xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
+  <item id="213$213R57" refID="0$3$27I57" parentID="213$213" restricted="1">
+    <dc:title>周定緯-寂寞包廂</dc:title>
+    <dc:date>2009-08-02</dc:date>
+    <upnp:genre>Unknown</upnp:genre>
+    <upnp:album>ANDY_PC888</upnp:album>
+    <upnp:albumArtURI dlna:profileID="JPEG_TN">http://192.168.1.13:9000/resources/nocover_video.jpg</upnp:albumArtURI>
+    <pv:modificationTime>1249200641</pv:modificationTime>
+    <pv:addedTime>1368092438</pv:addedTime>
+    <pv:lastUpdated>1368092438</pv:lastUpdated>
+    <res size="54453644" duration="0:05:12.200" resolution="352x240" protocolInfo="http-get:*:video/mpeg:DLNA.ORG_PN=MPEG1;DLNA.ORG_OP=01;DLNA.ORG_FLAGS=01700000000000000000000000000000">
+        http://192.168.1.13:9000/disk/DLNA-PNMPEG1-OP01-FLAGS01700000/video/O0$3$27I57/%F5%A8%EE%9A%F7%AF%2D%EF%82%EF%9E%EC%85%FF%82.mpg
+    </res>
+    <upnp:class>object.item.videoItem.movie</upnp:class>
+  </item>
+</DIDL-Lite>
+

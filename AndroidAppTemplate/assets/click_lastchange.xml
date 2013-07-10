@@ -1,0 +1,27 @@
+<Event xmlns="urn:schemas-upnp-org:metadata-1-0/AVT/">
+    <InstanceID val="0">
+        <RecordStorageMedium val="NOT_IMPLEMENTED"/>
+        <CurrentPlayMode val="NORMAL"/>
+        <TransportState val="STOPPED"/>
+        <RecordMediumWriteStatus val="NOT_IMPLEMENTED"/>
+        <CurrentRecordQualityMode val="NOT_IMPLEMENTED"/>
+        <PlaybackStorageMedium val="NOT_IMPLEMENTED"/>
+        <NumberOfTracks val="1"/>
+        <CurrentMediaDuration val="0:00:00"/>
+        <CurrentTrackURI val=""/>
+        <NextAVTransportURIMetaData val="NOT_IMPLEMENTED"/>
+        <PossiblePlaybackStorageMedia val="NOT_IMPLEMENTED"/>
+        <PossibleRecordStorageMedia val="NOT_IMPLEMENTED"/>
+        <AVTransportURI val="http://opml.radiotime.com/Tune.ashx?id=s90625&amp;partnerId=iq4GbQ5&amp;serial=e069954d826b"/>
+        <NextAVTransportURI val="NOT_IMPLEMENTED"/>
+        <TransportStatus val="OK"/>
+        <CurrentTrackMetaData val=""/>
+        <AVTransportURIMetaData val="&lt;DIDL-Lite xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot; xmlns:dlna=&quot;urn:schemas-dlna-org:metadata-1-0/&quot; xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot;&gt;&lt;item id=&quot;Local Radio-Asia FM 92.3 | (Top 40/Pop)&quot; parentID=&quot;Local Radio&quot; restricted=&quot;0&quot; dlna:dlnaManaged=&quot;00000004&quot;&gt;&lt;dc:title&gt;Asia FM 92.3 | (Top 40/Pop)&lt;/dc:title&gt;&lt;upnp:class&gt;object.item.audioItem.musicTrack&lt;/upnp:class&gt;&lt;res protocolInfo=&quot;http-get:*:audio/x-mpegurl:*&quot; bitrate=&quot;64&quot;&gt;http://opml.radiotime.com/Tune.ashx?id=s90625&amp;partnerId=iq4GbQ5&amp;serial=e069954d826b&lt;/res&gt;&lt;upnp:albumArtURI dlna:profileID=&quot;JPEG_TN&quot;&gt;http://d1i6vahw24eb07.cloudfront.net/s3000q.png&lt;/upnp:albumArtURI&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;"/>
+        <CurrentTrackDuration val="0:00:00"/>
+        <PossibleRecordQualityModes val="NOT_IMPLEMENTED"/>
+        <CurrentTransportActions val="Play,Seek,X_DLNA_SeekTime"/>
+        <CurrentTrack val="1"/>
+	</InstanceID>
+</Event>
+        
+

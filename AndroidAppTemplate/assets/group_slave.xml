@@ -1,0 +1,16 @@
+<?xml version="1.0"?> 
+<e:propertyset xmlns:e="urn:schemas-upnp-org:event-1-0">
+    <e:property>
+        <Device_udn>uuid:10a4890b-a255-4871-8c17-225d85366b17</Device_udn>
+        
+    </e:property>
+    <e:property>
+        <Device_name>AGS777</Device_name>
+        
+    </e:property>
+    <e:property>
+        <Device_role>DEVICEROLETYPE_E_SLAVE</Device_role>
+        
+    </e:property>
+    
+</e:propertyset> 

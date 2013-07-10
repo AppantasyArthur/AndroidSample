@@ -1,0 +1,8 @@
+<Event xmlns="">
+    <QueueDump version="1.0.0">
+        <Queue name="Q:0">
+            <Track id="周定緯-寂寞包廂(93000)" title="周定緯-寂寞包廂"></Track>
+            <Track id="周定緯-寂寞包廂(402000)" title="周定緯-寂寞包廂"></Track>
+        </Queue>
+   	</QueueDump>
+</Event>

@@ -47,6 +47,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.appantasy.androidapptemplate.didllite.item.ItemDO;
+import com.appantasy.androidapptemplate.didllite.item.ItemHandler;
+import com.appantasy.androidapptemplate.event.group.GroupHandler;
+import com.appantasy.androidapptemplate.event.group.GroupVO;
 import com.appantasy.androidapptemplate.event.lastchange.LastChangeDO;
 import com.appantasy.androidapptemplate.event.lastchange.LastChangeHandler;
 
@@ -109,6 +113,84 @@ public class MainActivity extends ListActivity {
 			"</InstanceID>" +
 		"</Event>";
     
+    private String didlLite = "<DIDL-Lite xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:upnp=\"urn:schemas-upnp-org:metadata-1-0/upnp/\" xmlns:dlna=\"urn:schemas-dlna-org:metadata-1-0/\" xmlns:pv=\"http://www.pv.com/pvns/\" xmlns=\"urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/\">" +
+    							"<item id=\"7I70\" parentID=\"7\" restricted=\"1\">" +
+    							"<dc:title>Open All Night</dc:title>" +
+    							"<dc:date>2002-01-01</dc:date>" +
+    							"<upnp:artist>Bon Jovi</upnp:artist>" +
+    							"<upnp:genre>Rock</upnp:genre>" +
+    							"<upnp:album>Bounce</upnp:album>" +
+    							"<upnp:originalTrackNumber>12</upnp:originalTrackNumber>" +
+    							"<dc:creator>Bon Jovi</dc:creator>" +
+    							"<upnp:albumArtURI dlna:profileID=\"JPEG_TN\">http://192.168.1.11:9000/cgi-bin/W160/H160/S267/L15463/Xjpeg-scale.desc/O7I70.jpg</upnp:albumArtURI>" +
+    								"<upnp:albumArtist>Bon Jovi</upnp:albumArtist>" +
+    								"<pv:lastPlayedTime>2013-07-01T17:14:12</pv:lastPlayedTime>" +
+    								"<pv:playcount>1</pv:playcount>" +
+    								"<pv:modificationTime>1338984350</pv:modificationTime>" +
+    								"<pv:addedTime>1368092439</pv:addedTime>" +
+    								"<pv:lastUpdated>1372670052</pv:lastUpdated>" +
+    								"<res size=\"6265580\" duration=\"0:04:20\" protocolInfo=\"http-get:*:audio/mpeg:DLNA.ORG_PN=MP3;DLNA.ORG_OP=01;DLNA.ORG_FLAGS=01700000000000000000000000000000\">" +
+    									"http://192.168.1.11:9000/disk/DLNA-PNMP3-OP01-FLAGS01700000/music/O7I70/Open%20All%20Night.mp3" +
+    								"</res>" +
+    							"<upnp:class>object.item.audioItem.musicTrack</upnp:class>" +
+    							"</item>" +
+    							"</DIDL-Lite>";
+    
+    private String embMeta = "<DIDL-Lite xmlns=\"urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:upnp=\"urn:schemas-upnp-org:metadata-1-0/upnp/\"><item id=\"7I70\" parentID=\"7\" restricted=\"1\"> <dc:title>Open All Night</dc:title> <dc:date>2002-01-01</dc:date> <upnp:artist>Bon Jovi</upnp:artist> <upnp:genre>Rock</upnp:genre> <upnp:album>Bounce</upnp:album> <upnp:originalTrackNumber>12</upnp:originalTrackNumber> <dc:creator>Bon Jovi</dc:creator> <upnp:albumArtURI dlna:profileID=\"JPEG_TN\">http://192.168.1.11:9000/cgi-bin/W160/H160/S267/L15463/Xjpeg-scale.desc/O7I70.jpg</upnp:albumArtURI> <upnp:albumArtist>Bon Jovi</upnp:albumArtist> <pv:lastPlayedTime>2013-07-01T17:14:12</pv:lastPlayedTime> <pv:playcount>1</pv:playcount> <pv:modificationTime>1338984350</pv:modificationTime> <pv:addedTime>1368092439</pv:addedTime> <pv:lastUpdated>1372670052</pv:lastUpdated> <res resolution=\"\" colorDepth=\"0\" size=\"6265580\" duration=\"0:04:20\" protocolInfo=\"http-get:*:audio/mpeg:DLNA.ORG_PN=MP3;DLNA.ORG_OP=01;DLNA.ORG_FLAGS=01700000000000000000000000000000\">http://192.168.1.11:9000/disk/DLNA-PNMP3-OP01-FLAGS01700000/music/O7I70/Open%20All%20Night.mp3</res> <upnp:class>object.item.audioItem.musicTrack</upnp:class> </item></DIDL-Lite>";
+    
+    private String errMeta = "<Event xmlns=\"urn:schemas-upnp-org:metadata-1-0/AVT/\"><InstanceID val=\"0\"><RecordStorageMedium val=\"NOT_IMPLEMENTED\"/><CurrentPlayMode val=\"NORMAL\"/><TransportState val=\"STOPPED\"/><RecordMediumWriteStatus val=\"NOT_IMPLEMENTED\"/><CurrentRecordQualityMode val=\"NOT_IMPLEMENTED\"/><PlaybackStorageMedium val=\"NOT_IMPLEMENTED\"/><NumberOfTracks val=\"1\"/><CurrentMediaDuration val=\"0:00:00\"/><CurrentTrackURI val=\"\"/><NextAVTransportURIMetaData val=\"NOT_IMPLEMENTED\"/><PossiblePlaybackStorageMedia val=\"NOT_IMPLEMENTED\"/><PossibleRecordStorageMedia val=\"NOT_IMPLEMENTED\"/><AVTransportURI val=\"http://opml.radiotime.com/Tune.ashx?id=s90625&partnerId=iq4GbQ5&serial=e069954d826b\"/><NextAVTransportURI val=\"NOT_IMPLEMENTED\"/><TransportStatus val=\"OK\"/><CurrentTrackMetaData val=\"\"/><AVTransportURIMetaData val=\"&lt;DIDL-Lite xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot; xmlns:dlna=&quot;urn:schemas-dlna-org:metadata-1-0/&quot; xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot;&gt;&lt;item id=&quot;Local Radio-Asia FM 92.3 | (Top 40/Pop)&quot; parentID=&quot;Local Radio&quot; restricted=&quot;0&quot; dlna:dlnaManaged=&quot;00000004&quot;&gt;&lt;dc:title&gt;Asia FM 92.3 | (Top 40/Pop)&lt;/dc:title&gt;&lt;upnp:class&gt;object.item.audioItem.musicTrack&lt;/upnp:class&gt;&lt;res protocolInfo=&quot;http-get:*:audio/x-mpegurl:*&quot; bitrate=&quot;64&quot;&gt;http://opml.radiotime.com/Tune.ashx?id=s90625&amp;partnerId=iq4GbQ5&amp;serial=e069954d826b&lt;/res&gt;&lt;upnp:albumArtURI dlna:profileID=&quot;JPEG_TN&quot;&gt;http://d1i6vahw24eb07.cloudfront.net/s3000q.png&lt;/upnp:albumArtURI&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;\"/><CurrentTrackDuration val=\"0:00:00\"/><PossibleRecordQualityModes val=\"NOT_IMPLEMENTED\"/><CurrentTransportActions val=\"Play,Seek,X_DLNA_SeekTime\"/><CurrentTrack val=\"1\"/></InstanceID></Event>";
+    
+    private String testErrMeta = "<Event xmlns=\"urn:schemas-upnp-org:metadata-1-0/AVT/\">"+
+    		"<InstanceID val=\"0\">"+
+        "<RecordStorageMedium val=\"NOT_IMPLEMENTED\"/>"+
+        "<CurrentPlayMode val=\"NORMAL\"/>"+
+        "<TransportState val=\"STOPPED\"/>"+
+        "<RecordMediumWriteStatus val=\"NOT_IMPLEMENTED\"/>"+
+        "<CurrentRecordQualityMode val=\"NOT_IMPLEMENTED\"/>"+
+        "<PlaybackStorageMedium val=\"NOT_IMPLEMENTED\"/>"+
+        "<NumberOfTracks val=\"1\"/>"+
+        "<CurrentMediaDuration val=\"0:00:00\"/>"+
+        "<CurrentTrackURI val=\"\"/>"+
+        "<NextAVTransportURIMetaData val=\"NOT_IMPLEMENTED\"/>"+
+        "<PossiblePlaybackStorageMedia val=\"NOT_IMPLEMENTED\"/>"+
+        "<PossibleRecordStorageMedia val=\"NOT_IMPLEMENTED\"/>"+
+        "<AVTransportURI val=\"http://opml.radiotime.com/Tune.ashx?id=s90625&partnerId=iq4GbQ5&serial=e069954d826b\"/>"+
+        "<NextAVTransportURI val=\"NOT_IMPLEMENTED\"/>"+
+        "<TransportStatus val=\"OK\"/>"+
+        "<CurrentTrackMetaData val=\"\"/>"+
+        "<AVTransportURIMetaData val=\"&lt;DIDL-Lite xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot; xmlns:dlna=&quot;urn:schemas-dlna-org:metadata-1-0/&quot; xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot;&gt;&lt;item id=&quot;Local Radio-Asia FM 92.3 | (Top 40/Pop)&quot; parentID=&quot;Local Radio&quot; restricted=&quot;0&quot; dlna:dlnaManaged=&quot;00000004&quot;&gt;&lt;dc:title&gt;Asia FM 92.3 | (Top 40/Pop)&lt;/dc:title&gt;&lt;upnp:class&gt;object.item.audioItem.musicTrack&lt;/upnp:class&gt;&lt;res protocolInfo=&quot;http-get:*:audio/x-mpegurl:*&quot; bitrate=&quot;64&quot;&gt;http://opml.radiotime.com/Tune.ashx?id=s90625&amp;partnerId=iq4GbQ5&amp;serial=e069954d826b&lt;/res&gt;&lt;upnp:albumArtURI dlna:profileID=&quot;JPEG_TN&quot;&gt;http://d1i6vahw24eb07.cloudfront.net/s3000q.png&lt;/upnp:albumArtURI&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;\"/>"+
+        "<CurrentTrackDuration val=\"0:00:00\"/>"+
+        "<PossibleRecordQualityModes val=\"NOT_IMPLEMENTED\"/>"+
+        "<CurrentTransportActions val=\"Play,Seek,X_DLNA_SeekTime\"/>"+
+        "<CurrentTrack val=\"1\"/>"+
+	"</InstanceID>"+
+"</Event>";
+    
+    private String _group = "<?xml version=\"1.0\"?> "+
+"<e:propertyset xmlns:e=\"urn:schemas-upnp-org:event-1-0\">"+
+    "<e:property>"+
+     "   <Device_udn>uuid:60f87458-e7e7-4b2d-b3c1-4ed9a831e62a</Device_udn>"+
+        
+    "</e:property>"+
+    "<e:property>"+
+     "   <Device_name>AGS</Device_name>"+
+            
+    "</e:property>"+
+    "<e:property>"+
+     "   <Device_role>DEVICEROLETYPE_E_MASTER</Device_role>"+
+     
+    "</e:property>"+
+    "<e:property>"+
+     "   <GroupMap groupname=\"AGS + AGS777\">"+
+      "      <GroupMember UDN=\"uuid:60f87458-e7e7-4b2d-b3c1-4ed9a831e62a\" name=\"AGS\" role=\"DEVICEROLETYPE_E_MASTER\" alive=\"1\" icon=\"icon1\"></GroupMember>"+
+      "      <GroupMember UDN=\"uuid:10a4890b-a255-4871-8c17-225d85366b17\" name=\"AGS777\" role=\"DEVICEROLETYPE_E_SLAVE\" alive=\"0\" icon=\"icon1\"></GroupMember>"+
+            
+       " </GroupMap>"+
+     
+    "</e:property>"+
+   
+"</e:propertyset> ";
+    
     // METHODS
     
 	@Override
@@ -116,9 +198,14 @@ public class MainActivity extends ListActivity {
 		
 		super.onCreate(savedInstanceState);
 		
-		LastChangeDO data = _parseLastChangeEvent(xml); 
-		if(data != null)
-			Log.d(this.toString(), data.toString());
+		GroupVO data = _parseGroupInfo(_group); 
+		System.out.println(data);
+		
+		//ItemDO data = _parseDidleListItem(embMeta); 
+		//System.out.println(data);
+		//LastChangeDO data = _parseLastChangeEvent(testErrMeta); 
+		//if(data != null)
+		//	Log.d(this.toString(), data.toString());
 		
 		//ServerRunner.run(DebugServer.class);
 		
@@ -141,6 +228,78 @@ public class MainActivity extends ListActivity {
 		
 	}
 	
+	private GroupVO _parseGroupInfo(String groupInfo) {
+		
+		GroupVO data = new GroupVO();
+		
+		try {   
+			  
+		    SAXParserFactory spf = SAXParserFactory.newInstance();   
+		    SAXParser sp = spf.newSAXParser();   
+		    XMLReader xr = sp.getXMLReader();   
+		  
+		    GroupHandler dataHandler = new GroupHandler();   
+		    xr.setContentHandler(dataHandler);   
+		  
+		    if(true){
+		    	
+		    	xr.parse(new InputSource(new StringReader(groupInfo))); 
+			    data = dataHandler.getData();  
+		    	
+		    } 
+		    
+		  } catch(ParserConfigurationException pce) {   
+		    Log.e("SAX XML", "sax parse error", pce);   
+		  } catch(SAXException se) {   
+		    Log.e("SAX XML", "sax error", se);   
+		  } catch(IOException ioe) {   
+		    Log.e("SAX XML", "sax parse io error", ioe);   
+		  } catch(Exception e) {
+			  e.printStackTrace();
+		  }  
+		
+		return data;
+		
+	}
+
+	private ItemDO _parseDidleListItem(String metadata) {
+		
+		ItemDO data = new ItemDO();
+		
+		try {   
+			  
+		    SAXParserFactory spf = SAXParserFactory.newInstance();   
+		    SAXParser sp = spf.newSAXParser();   
+		    XMLReader xr = sp.getXMLReader();   
+		  
+		    ItemHandler dataHandler = new ItemHandler();   
+		    xr.setContentHandler(dataHandler);   
+		  
+		    if(true){
+		    			
+		    	//  dlna:profileID=\"JPEG_TN\"
+		    	//String dlna = ;
+		    	metadata = metadata.replace(" dlna:profileID=\"JPEG_TN\"", "");
+		    	metadata = metadata.replace("pv:", "");
+		    	xr.parse(new InputSource(new StringReader(metadata))); 
+			    data = dataHandler.getData();  
+		    	
+		    } 
+		    
+		  } catch(ParserConfigurationException pce) {   
+		    Log.e("SAX XML", "sax parse error", pce);   
+		  } catch(SAXException se) {   
+		    Log.e("SAX XML", "sax error", se);   
+		  } catch(IOException ioe) {   
+		    Log.e("SAX XML", "sax parse io error", ioe);   
+		  } catch(Exception e) {
+			  e.printStackTrace();
+		  }  
+		
+		return data;
+		
+	}
+
 	private LastChangeDO _parseLastChangeEvent(String xml) {   
 		
 		LastChangeDO data = null;   
@@ -157,6 +316,7 @@ public class MainActivity extends ListActivity {
 		  
 		    if(true){
 		    			
+		    	xml = xml.replace("&", "&amp;");
 		    	xr.parse(new InputSource(new StringReader(xml))); 
 			    data = dataHandler.getData();  
 		    	

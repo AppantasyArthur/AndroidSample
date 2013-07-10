@@ -1,0 +1,24 @@
+<?xml version="1.0"?> 
+<e:propertyset xmlns:e="urn:schemas-upnp-org:event-1-0">
+    <e:property>
+        <Device_udn>uuid:60f87458-e7e7-4b2d-b3c1-4ed9a831e62a</Device_udn>
+        
+    </e:property>
+    <e:property>
+        <Device_name>AGS</Device_name>
+            
+    </e:property>
+    <e:property>
+        <Device_role>DEVICEROLETYPE_E_MASTER</Device_role>
+     
+    </e:property>
+    <e:property>
+        <GroupMap groupname="AGS + AGS777">
+            <GroupMember UDN="uuid:60f87458-e7e7-4b2d-b3c1-4ed9a831e62a" name="AGS" role="DEVICEROLETYPE_E_MASTER" alive="1" icon="icon1"></GroupMember>
+            <GroupMember UDN="uuid:10a4890b-a255-4871-8c17-225d85366b17" name="AGS777" role="DEVICEROLETYPE_E_SLAVE" alive="0" icon="icon1"></GroupMember>
+            
+        </GroupMap>
+     
+    </e:property>
+   
+</e:propertyset> 
